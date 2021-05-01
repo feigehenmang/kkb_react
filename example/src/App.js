@@ -1,10 +1,15 @@
 // import logo from './logo.svg';
+import { useState, useEffect } from 'react'
 import './App.css';
-import ReduxPage from './components/reduxPage'
+import Effect from './components/effect'
+// import ReduxPage from './components/reduxPage'
 function App() {
+  const [state, setState] = useState(0);
   return (
     <div className="App">
-      <ReduxPage></ReduxPage>
+      <button onClick={() => setState(state+1)}>{state}</button>
+      {state%2 && <Effect></Effect>}
+      {/* <ReduxPage></ReduxPage> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
