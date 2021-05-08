@@ -26,8 +26,6 @@ export const connect = (mapStateToProps, mapDispatchToProps) => {
             } else if (typeof mapDispatchToProps === 'object') {
                 dispatchToProps = bindActionCreators(mapDispatchToProps, store.dispatch)
             }
-
-
             let forceUpdate = useForceUpdate();
             // useEffect(() => {
             //     store.subscribe(() => {
@@ -56,6 +54,20 @@ export function bindActionCreators(creators, dispatch) {
     return result;
 }
 
+export function useSelector(selector) {
+    const store = useContext(Context);
+    return selector(store.getState())
+}
+export function useDispatch() {
+    const store = useContext(Context);
+    const forceUpdate = useForceUpdate();
+    useLayoutEffect(() => {
+        store.subscribe(() => {
+            forceUpdate();
+        })
+    }, [])
+    return store.dispatch
+}
 export function useForceUpdate() {
     let [, forceUpdate] = useReducer(x=>x+1, 0);
     return forceUpdate

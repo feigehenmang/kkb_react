@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css';
 import Effect from './components/effect'
 import ReactReduxPage from './components/ReactReduxPage'
+import ReactReduxHookPage from './components/ReactReduxHookPage'
 import { Provider } from './kredux/react-redux'
 // import { Provider } from 'react-redux'
 import store from './redux/'
@@ -12,7 +13,8 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <ReactReduxPage />
+        {/* <ReactReduxPage /> */}
+        <ReactReduxHookPage></ReactReduxHookPage>
       </Provider>
       {/* <button onClick={() => setState(state+1)}>{state}</button>
       {state%2 && <Effect></Effect>} */}
