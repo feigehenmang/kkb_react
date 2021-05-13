@@ -11,6 +11,7 @@ import { useState } from 'react';
 // import ReduxPage from './components/reduxPage'
 import Login from './components/Login'
 import CustomRoute from './CustomRoute';
+import Page from './components/Page';
 function Home() {
   return <div>Home</div>
 }
@@ -59,6 +60,10 @@ export const routes = [{
 {
   path: '/about2',
   component: About2
+},
+{
+  path: '/page',
+  component: Page
 }
 ];
 
@@ -73,6 +78,7 @@ function App() {
             <Link className="link" to="/login">login</Link>
             <Link className="link" to="/about">about</Link>
             <Link className="link" to="/about2">about2</Link>
+            <Link className="link" to="/page">page</Link>
             <Switch>
               <CustomRoute routes={routes} />
               {/* <Route path="/home" component={Home} />
