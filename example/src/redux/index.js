@@ -3,6 +3,7 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import userReducer from './user';
 const defaultState = 0;
 function countReducer(state = defaultState, action) {
     switch(action.type) {
@@ -17,4 +18,6 @@ function countReducer(state = defaultState, action) {
     }
 }
 
-export default createStore(combineReducers({count: countReducer}), applyMiddleware(promise, thunk, logger));
+export default createStore(combineReducers({count: countReducer, user: userReducer}),
+    applyMiddleware(promise, thunk, logger)
+);
