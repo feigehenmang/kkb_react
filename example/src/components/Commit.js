@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { GET_COMMIT } from '../redux/const';
 
 export default connect(state => state.commit, {
@@ -11,11 +11,12 @@ export default connect(state => state.commit, {
     }
 })(function Commit(props) {
     const {branchs, currBranch, branchInfo, getBranchInfo} = props;
-    console.log(branchInfo)
+    const dispatch = useDispatch();
+    const fn = branch => dispatch({type: GET_COMMIT, payload: {branch}})
     return (
         <div>
             <h1>{currBranch}</h1>
-            {branchs.map(branch => <h2 key={branch} onClick={() => getBranchInfo(branch)}>{branch}</h2>)}
+            {branchs.map(branch => <h2 key={branch} onClick={() => fn(branch)}>{branch}</h2>)}
             {branchInfo.map(branch=><div key={branch.url}>{JSON.stringify(branch)}</div>)}
         </div>
     )

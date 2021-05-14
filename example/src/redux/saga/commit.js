@@ -8,7 +8,7 @@ export function * handleUserSaga(action) {
         const result = yield call(getCommits, action.payload.branch);
         console.log(result);
         const isSucc = yield put({type: CHANGE_COMMIT, payload: {currBranch: action.payload.branch, branchInfo: result.data}})
-        // console.log(isSucc)
+        console.log(isSucc)
     } catch (error) {
         
     }
@@ -16,5 +16,6 @@ export function * handleUserSaga(action) {
 
 
 export function * userSaga() {
-    yield takeEvery(GET_COMMIT, handleUserSaga)
+    const result =  yield takeEvery(GET_COMMIT, handleUserSaga)
+    console.log('UserSaga', result)
 }
