@@ -2,16 +2,16 @@
 // import { useState, useEffect } from 'react'
 // import { BrowserRouter, Route, Link, Switch, Prompt} from './router/index';
 import { connect, Provider, useSelector } from 'react-redux';
-import { BrowserRouter, Switch, Route, Link, Prompt} from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, Prompt, Redirect, useHistory, useLocation} from 'react-router-dom';
 import store from './redux'
 import './App.css';
-import { Redirect, useHistory, useLocation } from '_react-router-dom@5.2.0@react-router-dom/cjs/react-router-dom.min';
 import { useState } from 'react';
 // import Effect from './components/effect'
 // import ReduxPage from './components/reduxPage'
 import Login from './components/Login'
 import CustomRoute from './CustomRoute';
 import Page from './components/Page';
+import Commit from './components/Commit';
 function Home() {
   return <div>Home</div>
 }
@@ -44,7 +44,7 @@ function About2() {
   return <div>About2</div>
 }
 export const routes = [{
-  path: "/",
+  path: "/home",
   exact: true,
   component: Home
 },
@@ -64,6 +64,10 @@ export const routes = [{
 {
   path: '/page',
   component: Page
+},
+{
+  path: '/commit',
+  component: Commit
 }
 ];
 
@@ -79,6 +83,7 @@ function App() {
             <Link className="link" to="/about">about</Link>
             <Link className="link" to="/about2">about2</Link>
             <Link className="link" to="/page">page</Link>
+            <Link className="link" to="/commit">commit</Link>
             <Switch>
               <CustomRoute routes={routes} />
               {/* <Route path="/home" component={Home} />

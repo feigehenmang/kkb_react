@@ -3,7 +3,11 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga'
 import userReducer from './user';
+import { commitReducer } from './commit';
+import rootSaga from './saga';
+import { userSaga } from './saga/commit';
 const defaultState = 0;
 function countReducer(state = defaultState, action) {
     switch(action.type) {
@@ -18,6 +22,10 @@ function countReducer(state = defaultState, action) {
     }
 }
 
-export default createStore(combineReducers({count: countReducer, user: userReducer}),
-    applyMiddleware(promise, thunk, logger)
+const sagaMiddleWare = createSagaMiddleware(rootSaga);
+const store = createStore(combineReducers({count: countReducer, user: userReducer, commit: commitReducer}),
+applyMiddleware(sagaMiddleWare, promise, thunk, logger)
 );
+sagaMiddleWare.run(rootSaga)
+
+export default store;
