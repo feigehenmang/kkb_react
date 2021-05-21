@@ -12,6 +12,7 @@ import Login from './components/Login'
 import CustomRoute from './CustomRoute';
 import Page from './components/Page';
 import Commit from './components/Commit';
+import { getCodeData } from './service/basedata';
 function Home() {
   return <div>Home</div>
 }
@@ -74,6 +75,12 @@ export const routes = [{
 
 function App() {
   // const [state, setState] = useState(0);
+  getCodeData(1001, 1002, 1003, 1000)
+  .then(
+    result => {
+      console.log('codes', result);
+    }
+  )
   return (
     <Provider store={store}>
       <div className="App">
