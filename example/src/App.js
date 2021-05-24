@@ -13,8 +13,18 @@ import CustomRoute from './CustomRoute';
 import Page from './components/Page';
 import Commit from './components/Commit';
 import { getCodeData } from './service/basedata';
+import { Ref } from './components/Ref';
+import SubMenu from './components/SubMenu';
+import Lazy from './components/Lazy';
 function Home() {
-  return <div>Home</div>
+  return (
+    <div>
+      Home
+      <Ref></Ref>
+      <SubMenu></SubMenu>
+      <Lazy/>
+    </div>
+  )
 }
 function About() {
   return (
