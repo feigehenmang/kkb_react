@@ -16,16 +16,35 @@ import { getCodeData } from './service/basedata';
 import { Ref } from './components/Ref';
 import SubMenu from './components/SubMenu';
 import Lazy from './components/Lazy';
-function Home() {
-  return (
-    <div>
-      Home
-      <Ref></Ref>
-      <SubMenu></SubMenu>
-      <Lazy/>
-    </div>
-  )
-}
+import Popover from './components/Popover';
+import Home from './components/Home';
+// function Home() {
+//   const [visible, setVisible] = useState(false);
+//   const onDismiss = (bol) => setVisible(bol);
+//   return (
+//     <div>
+//       Home
+     
+//       <Ref></Ref>
+//       <SubMenu></SubMenu>
+//       <Lazy/>
+
+
+//       <div className="space"></div>
+//       <Popover placement="top" width="160" trigger="click" visible={visible} content={(
+//         <div>
+//           <p>这是一段内容这是一段内容确定删除吗？</p>
+//           <div style={{textAlign: 'right', margin: 0}}>
+//             <button onClick={() => onDismiss(false)}>取消</button>
+//             <button onClick={() => onDismiss(true)}>确定</button>
+//           </div>
+//         </div>
+//       )}>
+//       <button>删除</button>
+//     </Popover>
+//     </div>
+//   )
+// }
 function About() {
   return (
     <div>
