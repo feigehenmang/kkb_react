@@ -1,28 +1,36 @@
 import React, { Component } from 'react'
-import Lazy from './Lazy';
+// import Lazy from './Lazy';
 import PopoerConfirm from './PopoerConfirm';
-import Popover from './Popover';
-import { Ref } from './Ref';
-import SubMenu from './SubMenu';
+// import Popover from './Popover';
+// import { Ref } from './Ref';
+// import SubMenu from './SubMenu';
 import './home.css'
+import { RootContext } from '../context';
+import TransferRef from './TransferRef';
 export default class Home extends Component {
+    static contextType = RootContext;
     constructor(props) {
         super(props);
         this.state = {
             visible: false
         }
+        this.ref = React.createRef()
     }
     onDismiss = bol => {
         this.setState({visible: bol})
     }
+    componentDidMount() {
+        console.log(this.ref);
+    }
     render() {
+        console.log('currContext', this.context)
         return (
             <div>
                 {/* <Ref></Ref>
                 <SubMenu></SubMenu>
                 <Lazy/> */}
 
-
+                <TransferRef ref={this.ref}></TransferRef>
                 <div className="space"></div>
                 <PopoerConfirm toogle={() => this.setState({visible: !this.state.visible})} hide={() => this.setState({visible: false})} visible={this.state.visible} text="删除" content={(
                     <div>

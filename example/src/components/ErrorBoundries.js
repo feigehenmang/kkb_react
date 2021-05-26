@@ -10,7 +10,7 @@ export default class ErrorBoundries extends Component {
         return {hasError: true}
     }
     componentDidCatch(error, errorInfo) {
-
+        console.log(error, errorInfo)
     }
     render() {
         return (

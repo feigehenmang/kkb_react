@@ -9,10 +9,13 @@ export default class PopoerConfirm extends Component {
         this.state = {
             show: false
         }
+        this.reference = React.createRef();
+        this.popper = React.createRef();
     }
     
     componentDidUpdate() {
-        this.popperJS = new Popper(this.refs.reference, this.refs.popper, {
+        // console.log(this.popper, this.reference)
+        this.popperJS = new Popper(this.reference.current, this.popper.current, {
             placement: 'top-end',
             modifiers: {
               computeStyle: {
@@ -34,10 +37,10 @@ export default class PopoerConfirm extends Component {
         // } 
         return (
             <ClickOutSide clickOutSideFn={hide}>
-                <button ref="reference" onClick={toogle} className="popover-container">
+                <button ref={this.reference} onClick={toogle} className="popover-container">
                     {text}
                 </button>
-                <div ref="popper" className="popover" style={{display: visible ? 'block':'none'}}>{content}</div>
+                <div ref={this.popper} className="popover" style={{display: visible ? 'block':'none'}}>{content}</div>
             </ClickOutSide>
             
         )

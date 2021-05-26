@@ -1,11 +1,10 @@
 // import logo from './logo.svg';
 // import { useState, useEffect } from 'react'
 // import { BrowserRouter, Route, Link, Switch, Prompt} from './router/index';
-import { connect, Provider, useSelector } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route, Link, Prompt, Redirect, useHistory, useLocation} from 'react-router-dom';
 import store from './redux'
 import './App.css';
-import { useState } from 'react';
 // import Effect from './components/effect'
 // import ReduxPage from './components/reduxPage'
 import Login from './components/Login'
@@ -13,11 +12,8 @@ import CustomRoute from './CustomRoute';
 import Page from './components/Page';
 import Commit from './components/Commit';
 import { getCodeData } from './service/basedata';
-import { Ref } from './components/Ref';
-import SubMenu from './components/SubMenu';
-import Lazy from './components/Lazy';
-import Popover from './components/Popover';
 import Home from './components/Home';
+import { RootContext } from './context';
 // function Home() {
 //   const [visible, setVisible] = useState(false);
 //   const onDismiss = (bol) => setVisible(bol);
@@ -111,28 +107,30 @@ function App() {
     }
   )
   return (
-    <Provider store={store}>
-      <div className="App">
-          <BrowserRouter>
-            <Link className="link" to="/home">home</Link>
-            <Link className="link" to="/login">login</Link>
-            <Link className="link" to="/about">about</Link>
-            <Link className="link" to="/about2">about2</Link>
-            <Link className="link" to="/page">page</Link>
-            <Link className="link" to="/commit">commit</Link>
-            <Switch>
-              <CustomRoute routes={routes} />
-              {/* <Route path="/home" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/about" component={About} />
-              <PrivateRoute path="/about2" component={About2} /> */}
-              {/* <Route path="/about2" component={About2} /> */}
-              {/* <Route path="/about" component={About2} /> */}
-              
-            </Switch>
-          </BrowserRouter>
-      </div>
-    </Provider>
+    <RootContext.Provider value={{name: 'Root'}}>
+      <Provider store={store}>
+        <div className="App">
+            <BrowserRouter>
+              <Link className="link" to="/home">home</Link>
+              <Link className="link" to="/login">login</Link>
+              <Link className="link" to="/about">about</Link>
+              <Link className="link" to="/about2">about2</Link>
+              <Link className="link" to="/page">page</Link>
+              <Link className="link" to="/commit">commit</Link>
+              <Switch>
+                <CustomRoute routes={routes} />
+                {/* <Route path="/home" component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/about" component={About} />
+                <PrivateRoute path="/about2" component={About2} /> */}
+                {/* <Route path="/about2" component={About2} /> */}
+                {/* <Route path="/about" component={About2} /> */}
+                
+              </Switch>
+            </BrowserRouter>
+        </div>
+      </Provider>
+    </RootContext.Provider>
     
       // {/* <button onClick={() => setState(state+1)}>{state}</button>
       // {state%2 && <Effect></Effect>} */}
