@@ -13,7 +13,7 @@ export default class PopoerConfirm extends Component {
     
     componentDidUpdate() {
         this.popperJS = new Popper(this.refs.reference, this.refs.popper, {
-            placement: 'top',
+            placement: 'top-end',
             modifiers: {
               computeStyle: {
                 gpuAcceleration: false
