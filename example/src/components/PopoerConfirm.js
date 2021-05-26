@@ -1,5 +1,6 @@
 import Popper from 'popper.js'
 import React, { Component } from 'react'
+import ClickOutSide from '../utils/clickOutSide'
 import './popover.css'
 
 export default class PopoerConfirm extends Component {
@@ -9,37 +10,36 @@ export default class PopoerConfirm extends Component {
             show: false
         }
     }
-    toogle = () => {
-        this.setState({
-            show: !this.state.show
-        }, () => {
-            this.popperJS = new Popper(this.refs.reference, this.refs.popper, {
-                placement: 'top',
-                modifiers: {
-                  computeStyle: {
-                    gpuAcceleration: false
-                  }
-                }
-              });
-        })
+    
+    componentDidUpdate() {
+        this.popperJS = new Popper(this.refs.reference, this.refs.popper, {
+            placement: 'top',
+            modifiers: {
+              computeStyle: {
+                gpuAcceleration: false
+              }
+            }
+          });
     }
+    
     componentWillUnmount() {
-        this.popperJS.destroy()
+        // this.popperJS.destroy()
     }
     render() {
-        const {visible, content, text} = this.props; 
-        console.log(visible, content)
+        const {visible, content, text, toogle, hide} = this.props; 
+        // console.log(visible, content)
         // const newChildren = React.cloneElement(children, {onClick: () => this.toogle()})
         // if(!visible) {
         //     return null;
         // } 
         return (
-            <>
-            <button ref="reference" onClick={this.toogle} className="popover-container">
-                {text}
-            </button>
-            <div ref="popper" className="popover" style={{display: this.state.show ? 'block':'none'}}>{content}</div>
-            </>
+            <ClickOutSide clickOutSideFn={hide}>
+                <button ref="reference" onClick={toogle} className="popover-container">
+                    {text}
+                </button>
+                <div ref="popper" className="popover" style={{display: visible ? 'block':'none'}}>{content}</div>
+            </ClickOutSide>
+            
         )
     }
 }
