@@ -29,17 +29,18 @@ export default class PopoerConfirm extends Component {
         // this.popperJS.destroy()
     }
     render() {
-        const {visible, content, text, toogle, hide} = this.props; 
+        const {visible, content, children, toogle, hide} = this.props; 
         // console.log(visible, content)
-        // const newChildren = React.cloneElement(children, {onClick: () => this.toogle()})
+        const newChildren = React.cloneElement(children, {onClick: toogle, ref: this.reference, className: 'popover-container'})
         // if(!visible) {
         //     return null;
         // } 
         return (
             <ClickOutSide clickOutSideFn={hide}>
-                <button ref={this.reference} onClick={toogle} className="popover-container">
+                {/* <button ref={this.reference} onClick={toogle} className="popover-container">
                     {text}
-                </button>
+                </button> */}
+                {newChildren}
                 <div ref={this.popper} className="popover" style={{display: visible ? 'block':'none'}}>{content}</div>
             </ClickOutSide>
             

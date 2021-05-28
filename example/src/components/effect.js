@@ -7,8 +7,9 @@ export default function Effect() {
     useEffect(() => {
         console.log('effect');
         return () => {
-        console.log('clean')
+            console.log('clean')
         }
-    }, [count])    
+    }, [count])   
+    // console.log('count',count) 
     return <h1 onClick={() => setCount(count+1)}>{count}</h1>
 }

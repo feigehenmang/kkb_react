@@ -106,10 +106,13 @@ function App() {
       console.log('codes', result);
     }
   )
+  const cancelClick = () => {
+    console.log('app')
+  }
   return (
     <RootContext.Provider value={{name: 'Root'}}>
       <Provider store={store}>
-        <div className="App">
+        <div onClick={cancelClick} className="App">
             <BrowserRouter>
               <Link className="link" to="/home">home</Link>
               <Link className="link" to="/login">login</Link>
