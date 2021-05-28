@@ -14,6 +14,7 @@ import Commit from './components/Commit';
 import { getCodeData } from './service/basedata';
 import Home from './components/Home';
 import { RootContext } from './context';
+import CallBack from './components/CallBack';
 // function Home() {
 //   const [visible, setVisible] = useState(false);
 //   const onDismiss = (bol) => setVisible(bol);
@@ -94,18 +95,22 @@ export const routes = [{
 {
   path: '/commit',
   component: Commit
+},
+{
+  path: '/callback',
+  component: CallBack
 }
 ];
 
 
 function App() {
   // const [state, setState] = useState(0);
-  getCodeData(1001, 1002, 1003, 1000)
-  .then(
-    result => {
-      console.log('codes', result);
-    }
-  )
+  // getCodeData(1001, 1002, 1003, 1000)
+  // .then(
+  //   result => {
+  //     console.log('codes', result);
+  //   }
+  // )
   const cancelClick = () => {
     console.log('app')
   }
@@ -120,6 +125,7 @@ function App() {
               <Link className="link" to="/about2">about2</Link>
               <Link className="link" to="/page">page</Link>
               <Link className="link" to="/commit">commit</Link>
+              <Link className="link" to="/callback">callback</Link>
               <Switch>
                 <CustomRoute routes={routes} />
                 {/* <Route path="/home" component={Home} />

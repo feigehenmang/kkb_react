@@ -10,6 +10,7 @@
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "popper.js": "^1.16.1",
+    "prop-types": "^15.7.2",
     "raf": "^3.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
