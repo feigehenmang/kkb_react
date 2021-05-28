@@ -37,7 +37,7 @@ export default class Home extends Component {
                 <Radom></Radom>
                 <Effect></Effect>
                 <TransferRef ref={this.ref}></TransferRef>
-                <div className="space"></div>
+                {/* <div className="space"></div> */}
                 <PortalChild />
                 <PopoerConfirm hide={() => this.setState({visible: false})} visible={this.state.visible} content={(
                     <div>
