@@ -9,7 +9,6 @@ import { RootContext } from '../context';
 import TransferRef from './TransferRef';
 import PortalChild from './PortalChild';
 import Effect from './effect';
-import Square from './Square';
 import Radom from './Radom';
 import Delete from './Delete';
 export default class Home extends Component {
