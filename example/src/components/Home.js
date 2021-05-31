@@ -40,7 +40,10 @@ export default class Home extends Component {
                 <TransferRef ref={this.ref}></TransferRef>
                 {/* <div className="space"></div> */}
                 <PortalChild />
-                <Delete></Delete>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <Delete></Delete>
+                    <button style={{marginLeft: '5px'}}>操作</button>
+                </div>
                 <Delete></Delete>
                 <Delete></Delete>
                 <Delete></Delete>
