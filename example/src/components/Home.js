@@ -11,6 +11,7 @@ import PortalChild from './PortalChild';
 import Effect from './effect';
 import Square from './Square';
 import Radom from './Radom';
+import Delete from './Delete';
 export default class Home extends Component {
     static contextType = RootContext;
     constructor(props) {
@@ -39,6 +40,12 @@ export default class Home extends Component {
                 <TransferRef ref={this.ref}></TransferRef>
                 {/* <div className="space"></div> */}
                 <PortalChild />
+                <Delete></Delete>
+                <Delete></Delete>
+                <Delete></Delete>
+                <Delete></Delete>
+                <Delete></Delete>
+                <Delete></Delete>
                 <PopoerConfirm hide={() => this.setState({visible: false})} visible={this.state.visible} content={(
                     <div>
                         <p>这是一段内容这是一段内容确定删除吗？</p>
