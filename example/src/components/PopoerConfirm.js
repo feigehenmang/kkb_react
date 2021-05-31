@@ -1,5 +1,6 @@
 import Popper from 'popper.js'
 import React, { Component, useEffect, useLayoutEffect, useRef } from 'react'
+import reactDom from 'react-dom';
 import ClickOutSide from '../utils/clickOutSide'
 import './popover.css'
 
@@ -41,9 +42,14 @@ export default function PopoerConfirm({children, hide, visible, content}) {
     const popper = useRef();
     const reference = useRef();
     const popperJs = useRef();
+    const node = useRef();
     const newChildren = React.cloneElement(children, { ref: (el) => {
         reference.current = el;
     }, className: 'popover-container'})
+    if(!node.current) {
+        node.current = document.createElement('div');
+        document.body.appendChild(node.current);
+    }
     useLayoutEffect(() => {
         popperJs.current = new Popper(reference.current, popper.current, {
             placement: 'top-end',
@@ -60,7 +66,7 @@ export default function PopoerConfirm({children, hide, visible, content}) {
     return (
         <ClickOutSide clickOutSideFn={hide}>
             {newChildren}
-            <div ref={popper} className="popover" style={{display: visible ? 'block':'none'}}>{content}</div>
+            {reactDom.createPortal(<div ref={popper} className="popover" style={{display: visible ? 'block':'none'}}>{content}</div>, node.current)}
         </ClickOutSide>
     )
 }
